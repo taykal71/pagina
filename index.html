@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pagina</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body class="hidden">
+    <header>
+        <nav id="nav" class="nav1">
+            <div class="contenedor-nav">
+                <div class="logo">
+                    <img src="buho.png" alt="">
+                </div>
+                <div class="enlaces" id="enlaces">
+                    <a href="#" id="enlaces-registro" class="bt">registro</a>
+                    <a href="#" id="enlaces-libros" class="bt">Libros</a>
+                    <a href="#" id="enlaces-audiolibros" class="bt">audiolibros</a>
+                    <a href="#" id="enlaces-podcast" class="bt">podcast</a>
+                </div>
+                <div class="icono" id="open">
+                    <span>&#9776;</span>
+                </div>
+            </div>
+        </nav>
+        <div class="textos">
+            <h1>Bienvenidos a Clickteca</h1>
+            <H2>Biblioteca</H2>
+        </div>
+    </header>
+    <main>
+        <section class="contenedor-main" id="recomendados">
+            <div class="card">
+                <div class="content-card">
+                    <div class="lo-nuevo">
+                        <div class="texto-team"></div>
+                            <h4>libros recomendados</h4>
+                        </div>
+                        <img src="garcia.png"alt="">
+                        <img src="musica.png" alt="">
+                        <img src="alquimista.png" alt="">
+                        <img src="hijas.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-2">
+                <div class="content-card">
+                    <div class="lo-nuevo-2">
+                        <div class="texto-team"></div>
+                            <h4>audiolbros recomendados</h4>
+                        </div>
+                        <img src="ruido.png" alt="">
+                        <img src="miedo.png" alt="">
+                        <img src="siguenaqui.png" alt="">
+                        <img src="violinista.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="card-3">
+                <div class="content-card">
+                    <div class="lo-nuevo-3">
+                        <div class="texto-team"></div>
+                            <h4>podcast recomdados</h4>
+                        </div>
+                        <img src="ruina.png" alt="">
+                        <img src="sentido.png" alt="">
+                        <img src="nospasa.png" alt="">
+                        <img src="hablando.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="contenedor-footer">
+            <div class="seccion-footer">
+                <h3>Sobre Clickteca</h3>
+                <p>Tu biblioteca digital favorita con libros, audiolibros y podcasts.
+                    Nuestra biblioteca virtual, un espacio diseñado para fomentar el amor por la lectura y el acceso a el conocimiento de manera accesible y conveniente. En un mundo en constante transformacion, nuestra biblioteca se presenta como una solucion innovadora para todos aquellos que buscan aprender, investigar y disfrutar de la literatura desde la comodidad de su hogar.
+                </p>
+            </div>
+            <div class="seccion-footer">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="#recomendados">Recomendados</a></li>
+                    <li><a href="#novedades">Novedades</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="seccion-footer">
+                <h3>Síguenos</h3>
+                <div class="redes-sociales">
+                    <a href="#"><i class="fab fa-facebook">facebook</i></a>
+                    <a href="#"><i class="fab fa-twitter"></i>twitter</a>
+                    <a href="#"><i class="fab fa-instagram"></i>instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Clickteca - Todos los derechos reservados</p>
+        </div>
+    </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const icono = document.querySelector('.icono');
+        const enlaces = document.querySelector('.enlaces');
+
+        if (icono) {
+            icono.addEventListener('click', function() {
+                enlaces.classList.toggle('activado');
+            });
+        }
+
+        // Animación suave al hacer scroll a las secciones con mayor visibilidad
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const seccion = document.querySelector(this.getAttribute('href'));
+                if (seccion) {
+                    // Añadimos un efecto de resaltado temporal
+                    seccion.style.transition = 'background-color 0.5s ease';
+                    seccion.style.backgroundColor = '#ffeb3b';
+                    seccion.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Removemos el resaltado después de un momento
+                    setTimeout(() => {
+                        seccion.style.backgroundColor = '';
+                    }, 1000);
+                }
+            });
+        });
+
+        // Animación para las imágenes al hacer hover
+        const imagenes = document.querySelectorAll('.lo-nuevo img, .lo-nuevo-2 img, .lo-nuevo-3 img');
+        imagenes.forEach(img => {
+            img.addEventListener('mouseover', function() {
+                this.style.transform = 'scale(1.1) rotate(2deg)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            
+            img.addEventListener('mouseout', function() {
+                this.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+
+        // Animación para el footer
+        const footer = document.querySelector('footer');
+        const seccionesFooter = document.querySelectorAll('.seccion-footer');
+
+        // Efecto de aparición al hacer scroll
+        window.addEventListener('scroll', () => {
+            const footerPos = footer.getBoundingClientRect().top;
+            const screenPos = window.innerHeight;
+
+            if (footerPos < screenPos) {
+                seccionesFooter.forEach((seccion, index) => {
+                    setTimeout(() => {
+                        seccion.style.opacity = '1';
+                        seccion.style.transform = 'translateY(0)';
+                    }, index * 200);
+                });
+            }
+        });
+
+        // Estilo inicial para la animación
+        seccionesFooter.forEach(seccion => {
+            seccion.style.opacity = '0';
+            seccion.style.transform = 'translateY(20px)';
+            seccion.style.transition = 'all 0.5s ease';
+        });
+
+        // Efecto hover en los enlaces del footer
+        const enlacesFooter = document.querySelectorAll('.seccion-footer a');
+        enlacesFooter.forEach(enlace => {
+            enlace.addEventListener('mouseover', function() {
+                this.style.transform = 'translateX(10px)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            
+            enlace.addEventListener('mouseout', function() {
+                this.style.transform = 'translateX(0)';
+            });
+        });
+    });
+    </script>
+    <script>
+        // Función para manejar el registro de usuarios
+        function registrarUsuario(event) {
+            event.preventDefault();
+            
+            const usuario = {
+                nombre: document.getElementById('nombre').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value
+            };
+
+            // Obtener usuarios existentes o inicializar array vacío
+            let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+            
+            // Agregar nuevo usuario
+            usuarios.push(usuario);
+            
+            // Guardar en localStorage
+            localStorage.setItem('usuarios', JSON.stringify(usuarios));
+            
+            alert('¡Usuario registrado exitosamente!');
+            document.getElementById('formRegistro').reset();
+        }
+
+        // Agregar formulario de registro al DOM
+        const formHTML = `
+            <div id="registro" class="form-container">
+                <form id="formRegistro" onsubmit="registrarUsuario(event)">
+                    <h3>Registro de Usuario</h3>
+                    <input type="text" id="nombre" placeholder="Nombre completo" required>
+                    <input type="email" id="email" placeholder="Correo electrónico" required>
+                    <input type="password" id="password" placeholder="Contraseña" required>
+                    <button type="submit">Registrarse</button>
+                </form>
+            </div>
+        `;
+
+        // Insertar el formulario después del header
+        const header = document.querySelector('header');
+        header.insertAdjacentHTML('afterend', formHTML);
+    </script>
+</body>
+</html>
